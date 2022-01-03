@@ -23,4 +23,14 @@ public class PasswordStrengthMeterTest {
 		assertStrength("ab12!@A", PasswordStrength.NORMAL);
 		assertStrength("Ab12!c", PasswordStrength.NORMAL);
 	}
+
+	@Test
+	void nullInput_Then_Invalid() {
+		assertStrength(null, PasswordStrength.INVALID);
+	}
+
+	@Test
+	void emptyInput_Then_Invalid() {
+		assertStrength("", PasswordStrength.INVALID);
+	}
 }
