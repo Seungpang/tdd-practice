@@ -42,4 +42,31 @@ public class ExpiryDateCalculatorTest {
 		LocalDate realExpiryDate = cal.calculdateExpiryDate(payData);
 		assertEquals(expectedExpiryDate, realExpiryDate);
 	}
+
+	@Test
+	void 첫_납부일과_만료일_일자가_다를때_만원_납부() {
+		PayData payData = PayData.builder()
+			.firstBillingDate(LocalDate.of(2022,1,31))
+			.billingDate(LocalDate.of(2022,2,28))
+			.payAmount(10_000)
+			.build();
+
+		assertExpiryDate(payData, LocalDate.of(2022, 3, 31));
+
+		PayData payData2 = PayData.builder()
+			.firstBillingDate(LocalDate.of(2022,1,30))
+			.billingDate(LocalDate.of(2022,2,28))
+			.payAmount(10_000)
+			.build();
+
+		assertExpiryDate(payData2, LocalDate.of(2022, 3, 30));
+
+		PayData payData3 = PayData.builder()
+			.firstBillingDate(LocalDate.of(2022,5,31))
+			.billingDate(LocalDate.of(2022,6,30))
+			.payAmount(10_000)
+			.build();
+
+		assertExpiryDate(payData3, LocalDate.of(2022, 7, 31));
+	}
 }
