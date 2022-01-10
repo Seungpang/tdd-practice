@@ -2,7 +2,6 @@ package chap07_2;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,7 +22,7 @@ public class UserRegisterTest {
 	void weakPassword() {
 		stubWeakPasswordChecker.setWeak(true); //암호가 약하다고 응답하도록 설정
 
-		assertThrows(WeakPasswordExceptions.class, () -> {
+		assertThrows(WeakPasswordException.class, () -> {
 			userRegister.register("id", "pw", "email");
 		});
 	}

@@ -14,7 +14,7 @@ public class UserRegister {
 
 	public void register(String id, String pw, String email) {
 		if (passwordChecker.checkPasswordWeak(pw)) {
-			throw new WeakPasswordExceptions();
+			throw new WeakPasswordException();
 		}
 		User user = userRepository.findById(id);
 		if (user != null) {
