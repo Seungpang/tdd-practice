@@ -109,6 +109,18 @@ nestedAfter 메서드 실행
 outerAfter 메서드 실행
 ````
 
+### @Timeout 애노테이션을 이용한 테스트 실행 시간 검증
++ @Timeout
+  + JUnit 5.5버전부터 지원하는 애노테이션으로 @Timeout 애노테이션을 사용하면 테스트가 일정 시간 내에 실행되는지 검증할 수 있다.
+
+```java
+@Test
+@Timeout(value = 500, unit = TimeUnit.MILLISECONDS)
+void sleep40Mills() throws InterrupedException {
+	Thread.sleep(40);
+}
+```
+
 ### 테스트 라이프사이클
 1. 테스트 메서드를 포함한 객체 생성
 2. (존재하면) @BeforeEach 애노테이션이 붙은 메서드 실행
