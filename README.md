@@ -61,6 +61,53 @@ test {
     }
 }
 ```
+### 중첩 구성
+@Nested 애노테이션을 사용하면 중첩 클래스에 테스트 메서드를 추가할 수 있다.
+```java
+public class Outer {
+	@BeforeEach
+	void outerBefore() {
+		System.out.println("outerBefore 메서드 실행");
+	}
+	
+	@Test
+	void outer() {
+		System.out.println("outer 메서드 실행");
+	}
+
+	@AfterEach
+	void outerAfter() {
+		System.out.println("outerAfter 메서드 실행");
+	}
+
+	@Nested
+	class NestedA {
+		@BeforeEach void nestedBefore() {
+			System.out.println("nestedBefore 메서드 실행");
+		}
+
+		@Test
+		void nested1(){
+			System.out.println("nested1 메서드 실행");
+		}
+
+		@AfterEach void nestedAfter() {
+			System.out.println("nestedAfter 메서드 실행");
+		}
+	}
+}
+```
+
+````shell
+outerBefore 메서드 실행
+outer 메서드 실행
+outerAfter 메서드 실행
+outerBefore 메서드 실행
+nestedBefore 메서드 실행
+nested1 메서드 실행
+nestedAfter 메서드 실행
+outerAfter 메서드 실행
+````
 
 ### 테스트 라이프사이클
 1. 테스트 메서드를 포함한 객체 생성
