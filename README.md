@@ -25,6 +25,18 @@
 |assertThrows(Class<T> expectedType, Executable executable)|executable을 실행한 결과로 지정한 타입의 익셉션이 발생하는지 검사한다.|
 |assertDoesNotThrow(Executable executable)|executable을 실행한 결과로 익셉션이 발생하지 않는지 검사한다.|
 
+## 조건에 따른 테스트
++ @EnabledOnOs, @DisabledOnOs
+  + OS 열거 타입을 사용해서 테스트를 실행하거나 실행하지 않을 운영체제 조건을 지정한다. 
++ @EnabledOnJre, @DisabledOnJre
+  + JRE 버전을 열거 타입을 사용해서 테스트를 실행하거나 실행하지 않을 JRE 조건을 지정한다. 
++ @EnabledIfSystemProperty, @DisabledIfSystemProperty
+  + 시스템 프로퍼티 값을 비교하여 테스트 실행 여부를 결정한다.
+  + @EnabledIfSystemProperty애노테이션의 named속성은 시스템 프로퍼티의 이름을 지정하고 Matches 속성에는 값의 일치 여부를 검사할 때 사용할 정규 표현식을 지정한다.
++ @EnabledIfEnvironmentVariable, @DisabledIfEnvironmentVariable
+  +named속성과 matches속성을 사용한다. 차이점은 named속성에 환경변수 이름을 사용한다는 것이다. 
+
+
 ### 테스트 라이프사이클
 1. 테스트 메서드를 포함한 객체 생성
 2. (존재하면) @BeforeEach 애노테이션이 붙은 메서드 실행
