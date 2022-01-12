@@ -25,7 +25,7 @@
 |assertThrows(Class<T> expectedType, Executable executable)|executable을 실행한 결과로 지정한 타입의 익셉션이 발생하는지 검사한다.|
 |assertDoesNotThrow(Executable executable)|executable을 실행한 결과로 익셉션이 발생하지 않는지 검사한다.|
 
-## 조건에 따른 테스트
+### 조건에 따른 테스트
 + @EnabledOnOs, @DisabledOnOs
   + OS 열거 타입을 사용해서 테스트를 실행하거나 실행하지 않을 운영체제 조건을 지정한다. 
 + @EnabledOnJre, @DisabledOnJre
@@ -36,6 +36,31 @@
 + @EnabledIfEnvironmentVariable, @DisabledIfEnvironmentVariable
   +named속성과 matches속성을 사용한다. 차이점은 named속성에 환경변수 이름을 사용한다는 것이다. 
 
+### 태깅과 필터링
++@Tag
+  + 클래스와 테스트 메서드에 적용할 수 있다.
+
+```java
+@Tag("integration")
+public class TagTest {
+
+  @Tag("very-slow")
+  @Test
+  void verySlow() {
+    int result = someVerySlowOp();
+    Assertions.assertEquals(result, 0);
+  }
+}
+```
+태크를 테스트 대상으로 선택하는 예
+```groovy
+test {
+    useJUnitPlatform {
+        includeTags 'integration'
+        excludeTags 'slow | very-slow'
+    }
+}
+```
 
 ### 테스트 라이프사이클
 1. 테스트 메서드를 포함한 객체 생성
