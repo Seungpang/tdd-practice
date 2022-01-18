@@ -18,7 +18,7 @@ dependencies {
 
 test {
     useJUnitPlatform {
-        includeTags 'integration'
-        excludeTags 'slow | very-slow'
+        //includeTags 'integration'
+        //excludeTags 'slow | very-slow'
     }
 }

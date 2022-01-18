@@ -4,7 +4,7 @@
 + Vintage: JUnit 4와 3을 지원하는 TestEngine 구현체
 
 ### 주요 단언 메서드
-+ Assertions 클래스가 제공하는 주요 단언 메서드
++ org.junit.jupiter.api.Assertions 클래스가 제공하는 주요 단언 메서드
 
 |메서드|설명|
 |----|---|
@@ -18,7 +18,7 @@
 |assertNotNull(Object actual)|값이 null이 아닌지 검사한다.|
 |fail()|테스트를 실패 처리한다.|
 
-+ Assetions가 제공하는 익셉션 발생 유무 검사 메서드
++ org.junit.jupiter.api.Assetions가 제공하는 익셉션 발생 유무 검사 메서드
 
 |메서드|설명|
 |---|---|
@@ -37,7 +37,7 @@
   +named속성과 matches속성을 사용한다. 차이점은 named속성에 환경변수 이름을 사용한다는 것이다. 
 
 ### 태깅과 필터링
-+@Tag
++ @Tag
   + 클래스와 테스트 메서드에 적용할 수 있다.
 
 ```java
