@@ -167,3 +167,21 @@ void sleep40Mills() throws InterrupedException {
 
 ### Mockito
 Mockito는 모의 객체 생성, 검증, 스텁을 지원하는 프레임워크이다.
+
+### AssertJ
+### 기본 검증 메서드
++ isEqualTo(값): 값과 같은지 검증한다.
++ isNotEqualTo(값): 값과 같지 않은지 검증한다.
++ isNull(): null인지 검증한다.
++ isNotNull(): null이 아닌지 검증한다.
++ isIn(값 목록): 값 목록에 포함되어 있는지 검증한다.
++ isNotIn(값 목록): 값 목록에 포함되어 있지 않은지 검증한다.
+
++ isLessThan(값): 값보다 작은지 검증한다.
++ isLessThanOrEqualTo(값): 값보다 작거나 같은지 검증한다.
++ isGreaterThan(값): 값보다 큰지 검증한다.
++ isGreaterThanOrEqualTo(값): 값보다 크거나 같은지 검증한다.
++ isBetween(값1, 값2): 값1과 값2 사이에 포함되는지 검증한다.
+
++ isTrue(): 값이 True인지 검증한다.
++ isFalse(): 값이 False인지 검증한다.
