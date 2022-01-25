@@ -185,3 +185,14 @@ Mockito는 모의 객체 생성, 검증, 스텁을 지원하는 프레임워크�
 
 + isTrue(): 값이 True인지 검증한다.
 + isFalse(): 값이 False인지 검증한다.
+
+### String에 대한 추가 검증 메서드
++ contains(CharSequence... values): 인자로 지정한 문자열들을 모두 포함ㅏ고 있는지 검증한다.
++ containsOnlyOnce(CharSequence sequen): 해당 문자열을 딱 한 번만 포함하는지 검증한다.
++ containsOnlyDigits(): 숫자만 포함하는지 검증한ㅏ.
++ containsWhitespaces(): 공백 문자를 포함하고 있는지 검증한다.
++ containsOnlyWhitespaces(): 공백 문자만 포함하는지 검증한다. 공백 문자 여부는 Character#isWhitespace() 메서드를 따른다.
++ containsPattern(CharSequence regex): 지정한 정규 표현식에 일치하는 문자ㄹ 포함하는 검증한다.
++ doesNotContain(CharSequence... values): 인자로 지정한 문자열들을 모두 포함하고 있지 않은지 검증한다.
++ doesNotContainAnyWhitespaces(): 공백 문자를 포함하고 있지 않은지를 검ㅡㅇ한다.
++ doesNotContainOnlyWhitespaces(): 공백 문자만 포함하고 있지 않은를 검증한다
