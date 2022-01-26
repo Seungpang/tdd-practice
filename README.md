@@ -187,12 +187,80 @@ Mockito는 모의 객체 생성, 검증, 스텁을 지원하는 프레임워크�
 + isFalse(): 값이 False인지 검증한다.
 
 ### String에 대한 추가 검증 메서드
+#### 특정 값을 포함하는지 검사
 + contains(CharSequence... values): 인자로 지정한 문자열들을 모두 포함ㅏ고 있는지 검증한다.
 + containsOnlyOnce(CharSequence sequen): 해당 문자열을 딱 한 번만 포함하는지 검증한다.
 + containsOnlyDigits(): 숫자만 포함하는지 검증한ㅏ.
 + containsWhitespaces(): 공백 문자를 포함하고 있는지 검증한다.
 + containsOnlyWhitespaces(): 공백 문자만 포함하는지 검증한다. 공백 문자 여부는 Character#isWhitespace() 메서드를 따른다.
 + containsPattern(CharSequence regex): 지정한 정규 표현식에 일치하는 문자ㄹ 포함하는 검증한다.
+
+#### 포함하지 않는지 여부를 확인
 + doesNotContain(CharSequence... values): 인자로 지정한 문자열들을 모두 포함하고 있지 않은지 검증한다.
-+ doesNotContainAnyWhitespaces(): 공백 문자를 포함하고 있지 않은지를 검ㅡㅇ한다.
-+ doesNotContainOnlyWhitespaces(): 공백 문자만 포함하고 있지 않은를 검증한다
++ doesNotContainAnyWhitespaces(): 공백 문자를 포함하고 있지 않은지를 검증한다.
++ doesNotContainOnlyWhitespaces(): 공백 문자만 포함하고 있지 않은를 검증한다.
++ doesNotContainPattern(Pattern pattern): 정규 표현식에 일치하는 문자를 포함하고 있지 않은지를 검증한다.
++ doesNotContainPattern(CharSequence pattern): 정규 표현식에 일치하는 문자를 포함하고 있지 않은지를 검증한다.
+
+#### 특정 문자열로 시작하거나 끝나는지 검증할 때
++ startsWith(CharSequence prefix): 지정한 문자열로 시작하는지를 검증한다.
++ doesNotStartWith(CharSequence prefix): 지정한 문자열로 시작하지 않는지를 검증한다.
++ endsWith(CharSequence suffix): 지정한 문자열로 끝나는지를 검증한다.
++ doesNotEndWith(CharSequence suffix): 지정한 문자열로 끝나지 않는지를 검증한다.
+
+### 숫자에 대한 추가 검증 메서드
++ isZero() / isNotZero(): 0인지 또는 0이 아닌지를 검증한다.
++ isOne(): 1인지를 검증한다.
++ isPositive() / isNotPositive(): 양수인지 또는 양수가 아닌지를 검증한다.
++ isNegative() / isNotNegative(): 음수인지 또는 음수가 아닌지를 검증한다.
+
+### 날짜/시간에 대한 검증 메서드
+#### LocalDateTime, LocalDate, Date 등 날짜와 시간 관련된 타입
++ isBefore(비교할 값): 비교할 값보다 이전인지 검증한다.
++ isBeforeOrEqualTo(비교할 값): 비교할 값보다 이전이거나 같은지 검증한다.
++ isAfter(비교할 값): 비교할 값보다 이후인지 검증한다.
++ isAfterOrEqualTo(비교할 값): 비교할 값보다 이후이거나 같은지 검증한다.
+
+#### LocalDateTime, OffsetDateTime, ZonedDateTime 타입
++ isEqualToIgnoringNanos(비교할 값): 나노 시간을 제외한 나머지 값이 같은지 검증한다. 즉 초 단위까지 값이 같은지 검증한다.
++ isEqualToIgnoringSeconds(비교할 값): 초 이하 시간을 제외한 나머지 값이 같은지 검증한다. 즉 분 단위까지 값이 같은지 검증한다.
++ isEqualToIgnoringMinutes(비교할 값): 분 이하 시간을 제외한 나머지 값이 같은지 검증한다. 즉 시 단위까지 값이 같은지 검증한다.
++ isEqualToIgnoringHours(비교할 값): 시 이하 시간을 제외한 나머지 값이 같은지 검증한다. 즉 일 단위까지 값이 같은지 검증한다.
+
+### 콜렉션에 대한 검증 메서드
+#### List, Set 등 콜렉션에 대한 주요 검증 메서드
++ hasSize(int expected): 콜렉션의 크기가 지정한 값과 같은지 검증한다.
++ contains(E ... values): 콜렉션이 지정한 값을 포함하는지 검증한다.
++ containsOnly(E ... values): 콜렉션이 지정한 값 만 포함하는지 검증한다.
++ containsAnyOf(E ... values): 콜렉션이 지정한 값 중 일부를 포함하는지 검증한다.
++ containsOnlyOnce(E ... values): 콜렉션이 지정한 값을 한 번만 포함하는지 검증한다.
+
+#### Map을 위한 주요 검증 메서드
++ containsKey(K key): Map이 지정한 키를 포함하는지 검증한다.
++ containsKeys(K... keys): Map이 지정한 키들을 포함하는지 검증한다.
++ containsOnlyKeys(K... keys): Map이 지정한 키만 포함하는지 검증한다.
++ doesNotContainKeys(VALUE... values): Map이 지정한 값들을 포함하는지 검증한다.
++ contains(Entry<K, V>... values): Map이 지정한 Entry<K,V>를 포함하는지 검증한다.
+
+#### 익셉션 관련 검증 메서드
++ assertThatThrownBy(): 익셉션 발생 여부를 검증한다.
+```java
+assertThatThrownBy(()-> readFile(new File("nofile.txt")));
+```
+발생한 익셉션의 타입을 추가로 검증하고 싶다면 isInstanceOf() 메서드를 사용한다.
+```java
+assertThatThrownBy(()->readFile(new File("nofile.txt")))
+        .isInstanceOf(IOException.class);
+```
+특정 타입의 익셉션이 발생하는지 검증하는 또다른 방법은 assertThatExceptionOfType() 메서드를 사용
+```java
+assertThatExceptionOfType(IOException.class)
+        .isThrownBy(()->{
+			readFile(new File("nofile.txt"))
+        });
+```
++ assertThatExceptionOfType(): 발생할 익셉션의 타입을 지정한다.
++ isThrownBy(): 메서드를 이용해서 익셉션이 발생할 코드 블록을 지정한다.
+
+
+
