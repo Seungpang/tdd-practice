@@ -262,5 +262,9 @@ assertThatExceptionOfType(IOException.class)
 + assertThatExceptionOfType(): 발생할 익셉션의 타입을 지정한다.
 + isThrownBy(): 메서드를 이용해서 익셉션이 발생할 코드 블록을 지정한다.
 
+이외에 assertThatIOException(), assertThatNullPointerException(), assertThatIllegalArgumentException(),
+assertThatIllegalStateException() 메서드도 제공한다.
+
+
 
 
