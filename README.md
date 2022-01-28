@@ -1,4 +1,5 @@
-### JUnit5 모듈
+## 테스트 코드
+## JUnit5 모듈
 + JUnit Platform: 테스트를 실행해주는 런쳐 제공, TestEngine API제공
 + Jupiter: TestEngine API 구현체로 JUnit 5를 제공
 + Vintage: JUnit 4와 3을 지원하는 TestEngine 구현체
@@ -168,6 +169,8 @@ void sleep40Mills() throws InterrupedException {
 ### Mockito
 Mockito는 모의 객체 생성, 검증, 스텁을 지원하는 프레임워크이다.
 
+추가적으로 정리 예정
+
 ### AssertJ
 ### 기본 검증 메서드
 + isEqualTo(값): 값과 같은지 검증한다.
@@ -264,7 +267,3 @@ assertThatExceptionOfType(IOException.class)
 
 이외에 assertThatIOException(), assertThatNullPointerException(), assertThatIllegalArgumentException(),
 assertThatIllegalStateException() 메서드도 제공한다.
-
-
-
-
